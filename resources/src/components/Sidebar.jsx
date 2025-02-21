@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { assets } from "../assets/assets"; // Import assets like icons
+import { assets } from "../../public/assets/assets"; // Import assets like icons
 import { useNavigate } from "react-router-dom";
 import { addSong } from "../services/Auth"; // Import API function to add song
 import { toast } from "react-toastify";

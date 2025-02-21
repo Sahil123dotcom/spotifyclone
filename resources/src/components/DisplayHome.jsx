@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "./Navbar";
-import { albumsData } from "../assets/assets";
+import { albumsData } from "../../public/assets/assets";
 import AlbumItem from "./AlbumItem";
-import { songsData } from "../assets/assets";
+import { songsData } from "../../public/assets/assets";
 import SongItem from "./SongItem";
 import Player from "./Player";
 // alert(JSON.stringify(albumsData))

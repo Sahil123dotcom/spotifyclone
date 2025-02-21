@@ -1,5 +1,5 @@
 import { createContext, useEffect, useRef, useState } from "react";
-import { songsData } from "../assets/assets";
+import { songsData }from "../../public/assets/assets";
 
 export const PlayerContext = createContext();
 
@@ -15,13 +15,25 @@ const PlayerContextProvider = (props) => {
     totalTime: { second: 0, minute: 0 },
   });
 
+
   // ✅ Play song safely
   const play = () => {
     if (audioRef.current) {
-      audioRef.current.play();
-      setPlayStatus(true);
+      audioRef.current
+        .play()
+        .then(() => {
+          console.log("Audio is playing...");
+          setPlayStatus(true);
+        })
+        .catch((error) => {
+          console.error("Playback error:", error);
+        });
+    } else {
+      console.error("Audio element is not available");
     }
   };
+  
+  
 
   // ✅ Pause song safely
   const pause = () => {
@@ -129,6 +141,7 @@ const PlayerContextProvider = (props) => {
   return (
     <PlayerContext.Provider value={contextValue}>
       {props.children}
+      <audio ref={audioRef} />
     </PlayerContext.Provider>
   );
 };
