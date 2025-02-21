@@ -4,6 +4,7 @@ import { albumsData } from "../assets/assets";
 import AlbumItem from "./AlbumItem";
 import { songsData } from "../assets/assets";
 import SongItem from "./SongItem";
+import Player from "./Player";
 // alert(JSON.stringify(albumsData))
 //  alert(JSON.stringify(AlbumItem))
 
@@ -39,6 +40,7 @@ const DisplayHome = () => {
           ))}
         </div>
       </div>
+      <Player />
     </div>
   );
 };

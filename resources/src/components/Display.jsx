@@ -5,6 +5,7 @@ import { albumsData } from "../assets/assets";
 import DisplayHome from "./DisplayHome";
 import DisplayAlbum from "./DisplayAlbum";
 import Sidebar from "./Sidebar";
+import Player from "./Player";
 
 const Display = () => {
   const displayRef = useRef();
@@ -32,7 +33,9 @@ const Display = () => {
         className="w-[100%]  px-6 pt-4 rounded bg-[#121212] text-white overflow-auto lg:w[75%] lg:ml-0 flex h-[100vh]"
       >
         <Sidebar />
+
         <DisplayHome />
+
       </div>
     </>
   );
