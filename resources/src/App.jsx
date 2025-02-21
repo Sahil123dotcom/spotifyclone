@@ -1,14 +1,13 @@
-import React from 'react'
-import Routes from './routes/Index'
-import Sidebar from './components/Sidebar'
+import React from "react";
+import Routes from "./routes/Index";
+import Sidebar from "./components/Sidebar";
 
-function App() {
+const App = () => {
   return (
-<div>
-  <Sidebar/>
-      <Routes/>
-      </div>
-  )
-}
+      <div>
+      <Routes />
+    </div>
+  );
+};
 
-export default App
+export default App;

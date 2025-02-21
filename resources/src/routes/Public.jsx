@@ -1,6 +1,6 @@
 import Header from "./Header";
 import DisplayAlbum from "../components/DisplayAlbum";
-import Display from "../components/Display";
+import Layout from "../components/Display";
 import PageNotFound from "./PageNotFound";
 import DisplayHome from "../components/DisplayHome";
 
@@ -12,16 +12,10 @@ export const Public = [
     children: [
       {
         path: "/", 
-        element: <Display />
-        // children: [
-        //   {
-        //     path: "/",  
-        //     element: <DisplayHome />,
-        //   },
-        // ],
+        element: <Layout />
       },
       {
-        path: "albums", 
+        path: "/albums", 
         element: <DisplayAlbum />,
       },
     ],

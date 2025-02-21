@@ -26,17 +26,15 @@ const Display = () => {
   }, [albumId, bgColor]);
 
   return (
-    
     <>
-    <div
-    ref={displayRef}
-    className="w-[100%] m-2 px-6 pt-4 rounded bg-[#121212] text-white overflow-auto lg:w[75%] lg:ml-0"
-  >
-  </div>
-  <DisplayHome/>
-
-
-  </>
+      <div
+        ref={displayRef}
+        className="w-[100%]  px-6 pt-4 rounded bg-[#121212] text-white overflow-auto lg:w[75%] lg:ml-0 flex h-[100vh]"
+      >
+        <Sidebar />
+        <DisplayHome />
+      </div>
+    </>
   );
 };
 
