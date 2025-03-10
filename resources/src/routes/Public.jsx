@@ -15,7 +15,7 @@ export const Public = [
         element: <Layout />
       },
       {
-        path: "/albums", 
+        path: "/albums/:singer", 
         element: <DisplayAlbum />,
       },
     ],

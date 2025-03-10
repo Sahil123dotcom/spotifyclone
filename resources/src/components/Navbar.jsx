@@ -2,7 +2,7 @@ import React from "react";
 import { assets } from "../../public/assets/assets";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const  Navbar = () => {
 
   const navigate = useNavigate()
   return (

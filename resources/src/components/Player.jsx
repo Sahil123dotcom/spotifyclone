@@ -16,7 +16,7 @@ const Player = () => {
       </div>
       <div className="flex flex-col items-center gap-1 m-auto">
         <div className="flex gap-4">
-          <img className="w-4 cursor-pointer" src={assets.shuffle_icon} alt="Shuffle" />
+           <img className="w-4 cursor-pointer" src={assets.shuffle_icon} alt="Shuffle" />
           <img onClick={previous} className="w-4 cursor-pointer" src={assets.prev_icon} alt="Previous" />
           {playStatus ? (
             <img onClick={pause} className="w-4 cursor-pointer" src={assets.pause_icon} alt="Pause" />

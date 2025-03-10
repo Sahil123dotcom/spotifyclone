@@ -18,13 +18,20 @@ const Display = () => {
   // Default to white if albumId is not found
   const bgColor = albumsData[albumId] ? albumsData[albumId].bgColor : "#ffffff";
 
+  // useEffect(() => {
+  //   if (isAlbum && albumId) {
+  //     displayRef.current.style.background = `linear-gradient(${bgColor}, #121212)`;
+  //   } else {
+  //     displayRef.current.style.background = `#121212`;
+  //   }
+  // }, [albumId, bgColor]);
   useEffect(() => {
-    if (isAlbum && albumId) {
+    if (isAlbum) {
       displayRef.current.style.background = `linear-gradient(${bgColor}, #121212)`;
     } else {
       displayRef.current.style.background = `#121212`;
     }
-  }, [albumId, bgColor]);
+  });
 
   return (
     <>
@@ -33,7 +40,6 @@ const Display = () => {
         className="w-[100%]  px-6 pt-4 rounded bg-[#121212] text-white overflow-auto lg:w[75%] lg:ml-0 flex h-[100vh]"
       >
         <Sidebar />
-
         <DisplayHome />
 
       </div>

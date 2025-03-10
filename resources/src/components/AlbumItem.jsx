@@ -1,21 +1,21 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const AlbumItem = ({image,name,desc,id,songId}) => {
+const AlbumItem = ({ image, name, desc, id }) => {
+  const navigate = useNavigate();
 
-  const navigate=useNavigate();
+console.log()
+
   return (
-    // <div onClick={()=>{navigate(`/albums/${id}`)}} className='min-w-[180px] p-2 px-3 rounded cursor-pointer hover:bg-[#dddddd26]'>
-    // <div onClick={()=>{navigate(`/albums`)}} 
     <div 
-    onClick={() => navigate(`/albums`)}
-    // onClick={() => navigate(`/albums`)}
-    className='min-w-[180px] p-2 px-3 rounded cursor-pointer hover:bg-[#dddddd26]'>
-        <img className="rounded" src={image} alt=""  />
-        <p className='font-bold mt-2 mb-1'>{name}</p>
-        <p className='text-slate-200 text-sm'>{desc}</p>
+      onClick={() => navigate(`/albums/${name}`)}
+      className='min-w-[180px] p-2 px-3 rounded cursor-pointer hover:bg-[#dddddd26]'
+    >
+      <img className="rounded" src={image} alt={name} />
+      <p className='font-bold mt-2 mb-1'>{name}</p>
+      <p className='text-slate-200 text-sm'>{desc}</p>
     </div>
-  )
-}
+  );
+};
 
 export default AlbumItem;

@@ -1,5 +1,5 @@
 import { createContext, useEffect, useRef, useState } from "react";
-import { songsData }from "../../public/assets/assets";
+import { songsData } from "../../public/assets/assets";
 
 export const PlayerContext = createContext();
 
@@ -14,7 +14,6 @@ const PlayerContextProvider = (props) => {
     currentTime: { second: 0, minute: 0 },
     totalTime: { second: 0, minute: 0 },
   });
-
 
   // ✅ Play song safely
   const play = () => {
@@ -32,8 +31,6 @@ const PlayerContextProvider = (props) => {
       console.error("Audio element is not available");
     }
   };
-  
-  
 
   // ✅ Pause song safely
   const pause = () => {
