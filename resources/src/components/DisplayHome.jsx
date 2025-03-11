@@ -6,7 +6,7 @@ import SongItem from "./SongItem";
 import Player from "./Player";
 
 
-console.log(albumsData)
+// console.log(albumsData)
 const DisplayHome = () => {
   return (
     <div className="">

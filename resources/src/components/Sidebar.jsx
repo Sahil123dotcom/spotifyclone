@@ -1,52 +1,35 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { assets } from "../../public/assets/assets"; // Import assets like icons
-import { useNavigate } from "react-router-dom";
 import { addSong } from "../services/Auth"; // Import API function to add song
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { useNavigate } from "react-router-dom";
 const Sidebar = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false); // For toggling form visibility
-
-  const [song, setSong] = useState({
-    title: "",
-    artist: "",
-    album_id: "",
-    image: "",
-    audio_url: "",
-  });
-
+  const [song, setSong] = useState(null);
   const [message, setMessage] = useState(""); // To display success or error messages
-
   // Handle form input changes
   const handleChange = (e) => {
-    console.log("Input Changed:", e.target.name, e.target.value);
     setSong({ ...song, [e.target.name]: e.target.value });
   };
-
   // Function to check if the song exists on the internet
-  const checkSongExistence = async (title, artist) => {
+  const checkSongExistence = async () => {
     try {
-      const response = await fetch(
-        `https://itunes.apple.com/search?term=${encodeURIComponent(
-          title + " " + artist
-        )}&media=music&limit=1`
-      );
+      const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(song.title + " " + song.artist)}&media=music&limit=1`);
       const data = await response.json();
-      console.log(data, "data");
-      return data.results.length > 0; // Returns true if a match is found
+      setSong(data.results)
+      return data.results?.length > 0 ? data.results : [];
     } catch (error) {
       console.error("Error checking song existence:", error);
       return false; // Assume song doesn't exist if there's an error
     }
   };
-
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage(""); // Reset message before submission
-
+    checkSongExistence();
     // Check if all fields are filled
     if (
       !song.title ||
@@ -58,23 +41,21 @@ const Sidebar = () => {
       toast.warn("All fields are required!");
       return;
     }
-
     // Check if the song exists on the internet
-    const songExists = await checkSongExistence(song.title, song.artist);
-    if (!songExists) {
-      setMessage("Song not found on the internet. Please check the details.");
-      return;
-    }
-
-    // Call the API to add the song
+    // const songExists = await checkSongExistence(song.title, song.artist);
+    // if (!songExists) {
+    //   setMessage("Song not found on the internet. Please check the details.");
+    //   return;
+    // }
+    // // Call the API to add the song
     const result = await addSong(song);
-    if (result) {
-      toast.success("Song added successfully!");
-      setSong({ title: "", artist: "", album_id: "", image: "", audio_url: "" }); // Reset form
-      setShowForm(false); // Close the form after successful submission
-    } else {
-      setMessage("Failed to add song."); // Error message
-    }
+    // if (result) {
+    //   toast.success("Song added successfully!");
+    //   setSong({ title: "", artist: "", album_id: "", image: "", audio_url: "" }); // Reset form
+    //   // setShowForm(false); // Close the form after successful submission
+    // } else {
+    //   setMessage("Failed to add song."); // Error message
+    // }
   };
 
   return (
